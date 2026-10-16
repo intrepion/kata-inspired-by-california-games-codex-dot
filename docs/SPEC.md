@@ -1,0 +1,7 @@
+# Tideline Six specification
+
+An original keyboard-first browser game inspired by the six-event computer California Games structure. Original vector/canvas art, names, synthesis audio, and source. Single player. Practice any event; competition runs six in fixed order and awards 5/3/1 medal points against visible fixed targets. Practice does not update records. Competition records persist under a unique validated save key; storage failures must not prevent play.
+
+Events: half-pipe with directional pumping and timed lip/air stunts; footbag with positional kicks, headers, and turn combinations; surfing with board heading, curl risk, carving, and aerial re-entry; roller skating with alternating strides, squat/release jump and obstacle avoidance; BMX with pedaling, terrain ramps, airborne rotation and landing balance; flying disc with backswing/release meters followed by moving catcher and timed overhead/dive catches. Each gets separate guidance, camera, scoring, failure and results.
+
+Rounds intentionally shorter than the source. No simulation fidelity claims, multiplayer, licensed sponsors, exact trick catalogs, serious-injury rule, ROM emulation, or public website deployment. Full practice, six-event progression, restarting, pause, sound toggle, accessible HTML controls and text status. Detached local production preview port 5225, public GitHub repository with MIT and official OS ignores, CI at final SHA. Automated per-event behavioral tests, headless integration and native Mac acceptance when browser released; state incomplete coverage honestly.

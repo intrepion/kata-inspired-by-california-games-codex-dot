@@ -1,0 +1,3 @@
+# Engineering guidance
+
+Build an original six-sport browser game. Read docs/SPEC.md and docs/RESEARCH.md before changing sport rules. Use strict TypeScript, deterministic fixed-step sport simulation, and separate rendering from rules. Keep each sport's controls and scoring distinct. Add behavioral tests for scoring, failure, and endings when changing rules. Run npm test, npm run build, and npm run test:browser. Never use external game artwork, recordings, ROMs, or brand marks. Never clear unrelated browser storage. Saves use only tideline-six:v1. Do not alter other projects, previews, or ports. Public source must contain no personal paths, credentials, or local browser artifacts.
