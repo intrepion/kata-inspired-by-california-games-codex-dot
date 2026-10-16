@@ -49,8 +49,9 @@ export function draw(c:C,r:SportRun):void{
 function drawPipe(c:C,r:Pipe):void{
  sky(c,r.time);palm(c,70,285,.85);palm(c,900,285,1.2);rect(c,0,300,960,180,'#c6b99e');
  // The fixed side camera shows both coping edges and the full U-shaped surface.
- c.beginPath();c.moveTo(110,190);c.lineTo(170,190);c.bezierCurveTo(170,405,290,421,480,421);c.bezierCurveTo(670,421,790,405,790,190);c.lineTo(850,190);c.lineTo(850,468);c.lineTo(110,468);c.closePath();c.fillStyle='#df9772';c.fill();c.strokeStyle=ink;c.lineWidth=4;c.stroke();
- c.beginPath();c.moveTo(170,190);c.bezierCurveTo(170,405,290,421,480,421);c.bezierCurveTo(670,421,790,405,790,190);c.strokeStyle=cream;c.lineWidth=5;c.stroke();
+ const surface:number[][]=[];for(let x=175;x<=785;x+=5)surface.push([x,416-Math.pow((x-480)/305,2)*230]);
+ c.beginPath();c.moveTo(110,186);c.lineTo(175,186);for(const p of surface)c.lineTo(p[0]!,p[1]!);c.lineTo(850,186);c.lineTo(850,468);c.lineTo(110,468);c.closePath();c.fillStyle='#df9772';c.fill();c.strokeStyle=ink;c.lineWidth=4;c.stroke();
+ line(c,surface,cream,5);
  line(c,[[110,185],[177,185]],ink,6);line(c,[[783,185],[850,185]],ink,6);
  line(c,[[480,410],[480,450]],cream,2);
  const pos=r.position;const x=480+pos*305;const y=416-Math.pow(Math.min(1.1,Math.abs(pos)),2)*230;
@@ -77,7 +78,7 @@ function drawSurf(c:C,r:Surf):void{
  for(let row=0;row<9;row++){const yy=220+row*29;const off=Math.sin(r.time+row)*30;line(c,[[300+off,yy],[530+off,yy-14],[920,yy-23]],'#9dccc2',2);}
  const x=r.x;const y=175+r.depth*265-(r.air>0?Math.sin(r.air*Math.PI)*85:0);
  c.save();c.translate(x,y);c.rotate(r.heading);c.fillStyle=gold;c.beginPath();c.ellipse(0,0,42,12,0,0,Math.PI*2);c.fill();line(c,[[-25,0],[30,0]],cream,2);c.restore();person(c,x,y-6,{scale:.8,tilt:Math.sin(r.heading)*.5,shirt:coral});
- text(c,'LIP / AERIAL LINE',650,164,12);text(c,'FLATS — KEEP ABOVE',650,471,12,cream);text(c,'CURL ×3',35,382,16,cream);
+ text(c,'LIP / AERIAL LINE',650,164,12);text(c,'FLATS — KEEP ABOVE',650,471,12,cream);text(c,'CURL BONUS',35,382,16,cream);
 }
 function drawSkate(c:C,r:Skate):void{
  sky(c,r.time);rect(c,0,275,960,205,'#d5c6ab');

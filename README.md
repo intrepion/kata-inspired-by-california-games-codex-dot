@@ -2,6 +2,8 @@
 
 An original browser sports meet inspired by the event variety, cameras, and input rhythms of **California Games**. Skate a concrete crescent, juggle a footbag, carve a wave, stride along a promenade, flip a BMX bike, then throw and catch a flying disc. All six events are implemented with distinct rules, controls, scoring, failure states, and results.
 
+![Native Chrome six-event meet result](docs/evidence/native-meet.png)
+
 ## Play locally
 
 Requires Node.js 22.12+ (Node 24 recommended).

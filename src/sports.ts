@@ -34,9 +34,9 @@ export class Pipe extends Run {
   readonly id='pipe'; phase=-Math.PI/2; energy=.64; plant=-1; lipScored=false;
   get position(): number { return Math.sin(this.phase)*this.energy; }
   get ascending(): boolean { return Math.sin(this.phase)*Math.cos(this.phase)>0; }
-  get status(): string { return `${Math.round(this.energy*100)}% momentum · ${this.ascending?'↑ PUMP UP':'↓ PUMP DOWN'}`; }
+  get status(): string { return `${Math.round(this.energy*100)}% momentum · ${this.ascending?'↑ PUMP UP':'↓ PUMP DOWN'}${Math.abs(this.position)>1?' · AIR WINDOW':Math.abs(this.position)>.82?' · LIP WINDOW':''}`; }
   update(dt:number,i:Input):void {
-    const pump=i.held.has(this.ascending?'ArrowUp':'ArrowDown');
+    const pump=i.held.has(this.ascending?'ArrowUp':'ArrowDown')&&!i.held.has(this.ascending?'ArrowDown':'ArrowUp');
     this.energy=clamp(this.energy+(pump?.12:-.022)*dt,.4,1.12);
     this.phase+=dt*(1.5+this.energy*.6);
     const lip=Math.abs(this.position)>.82;
@@ -72,7 +72,7 @@ export class Bag extends Run {
 }
 export class Surf extends Run {
   readonly id='surf'; x=490; depth=.55; heading=0; air=0; carve=0; lastTurn=0; floatScore=0;
-  get status():string{return `${this.air>0?'AIR — TURN DOWN':this.x<300?'NEAR THE CURL · ×3':'OPEN FACE'} · heading ${Math.round(this.heading*180/Math.PI)}°`;}
+  get status():string{return `${this.air>0?'AIR — TURN DOWN':this.x<300?'NEAR THE CURL · BONUS':'OPEN FACE'} · heading ${Math.round(this.heading*180/Math.PI)}°`;}
   update(dt:number,i:Input):void {
     if(this.cooldown>0)return;
     const turn=(i.held.has('ArrowRight')?1:0)-(i.held.has('ArrowLeft')?1:0);
@@ -118,9 +118,9 @@ export class BMX extends Run {
     const old=this.distance;this.distance+=this.speed*dt;
     if(this.height<=0&&i.pressed.has('Space')){this.vy=180;this.height=.1;this.rotation=0;this.angle=0;this.hops++;}
     if(old<this.nextRamp&&this.distance>=this.nextRamp){this.vy=370;this.height=Math.max(this.height,.1);this.rotation=0;this.angle=0;this.nextRamp+=650;this.say('Ramp launch — ↑ or ↓ to rotate');}
-    if(this.height>0){const spin=(i.held.has('ArrowDown')?1:0)-(i.held.has('ArrowUp')?1:0);this.angle+=spin*dt*4.5;this.rotation+=Math.abs(spin)*dt*4.5;this.vy-=300*dt;this.height+=this.vy*dt;
+    if(this.height>0){const spin=(i.held.has('ArrowDown')?1:0)-(i.held.has('ArrowUp')?1:0);this.angle+=spin*dt*4.5;this.rotation+=spin*dt*4.5;this.vy-=300*dt;this.height+=this.vy*dt;
       if(this.height<=0){this.height=0;const level=Math.abs(Math.atan2(Math.sin(this.angle),Math.cos(this.angle)))<.61;
-        if(level){this.points(this.rotation>5.7?500:this.rotation>.6?150:60,this.rotation>5.7?'full flip landed':'level landing');}else{this.bail('Off balance landing — release level');this.speed=55;}this.angle=0;}}
+        if(level){this.points(Math.abs(this.rotation)>5.7?500:Math.abs(this.rotation)>.6?150:60,Math.abs(this.rotation)>5.7?'full flip landed':'level landing');}else{this.bail('Off balance landing — release level');this.speed=55;}this.angle=0;}}
     if(this.distance>=this.nextRock){if(this.height>22)this.points(100,'rock cleared');else {this.bail('Rock strike — hop earlier');this.speed=55;}this.nextRock+=540;}
     if(this.distance>=2400){this.points(Math.max(0,40-this.time)*18,'finish bonus');this.finish('Ridge complete');}
   }
