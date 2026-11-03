@@ -1,6 +1,27 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "gameId": "kata-inspired-by-california-games-codex-dot",
   "playUrl": "https://intrepion.github.io/kata-inspired-by-california-games-codex-dot/",
-  "screenshots": []
+  "screenshots": [
+    {
+      "path": "arcade/screenshots/ci-20261103-01.jpg",
+      "sha256": "096880c62c8feb0400a154f3035c31fc3606ed4faf31cdf38a143a6c92e1c8a2",
+      "alt": "California gameplay",
+      "provenance": {
+        "kind": "ci_gameplay_capture",
+        "sourcePath": "arcade/capture-evidence/ci-20261103-01.png",
+        "sourceSha256": "e21050248d6f28932f1e3ae22c37447b72930055f6d119d5d9b8c64c88888c86",
+        "captureCommit": "b8a0b2a69e61c39289f71b682ff829106df755b4",
+        "workflowRunId": "41618864183",
+        "inputHashes": {
+          "assets/index-DgLN411W.css": "26f38f73b61f690bd0164d39fa1e14dba166a86669434ba48255a5582edce301",
+          "assets/index-czAskYy0.js": "806cf83c566e819fb5efafd23576d1adba91ec1c53ab49463341a4c95a9127eb",
+          "index.html": "122cd7a999ab6adb64cffdf46fef9b8531a3b77fccb476179af5d902dc554e6a"
+        },
+        "publishedFilesVerifiedAt": "2026-11-03T10:25:04Z",
+        "captureRecordPath": "arcade/capture-evidence/ci-20261103-record.json",
+        "captureRecordSha256": "7839288a71531fa7f8a131b695ce6a57b01d1808143cd012b8c99b8abc9270f2"
+      }
+    }
+  ]
 }
