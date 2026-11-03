@@ -63,3 +63,7 @@ The project follows the local Matt Pocock Grill with Docs/domain-modeling and Im
 Original source, artwork code and generated audio: [MIT](LICENSE). California Games and its associated properties belong to their respective owners; this project is unaffiliated.
 
 `.gitignore` contains the official GitHub Global templates [Linux](https://github.com/github/gitignore/blob/main/Global/Linux.gitignore), [Windows](https://github.com/github/gitignore/blob/main/Global/Windows.gitignore), and [macOS](https://github.com/github/gitignore/blob/main/Global/macOS.gitignore), followed by project-specific ignores for dependencies, builds, local output, reports, environment files and logs.
+
+## Play online
+
+[Play on GitHub Pages](https://intrepion.github.io/kata-inspired-by-california-games-codex-dot/). Return to the [Kata Arcade](https://intrepion.github.io/).
