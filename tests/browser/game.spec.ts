@@ -1,5 +1,5 @@
 import { test,expect,type Page } from '@playwright/test';
-async function open(page:Page):Promise<void>{await page.clock.install({time:new Date('2026-01-01T00:00:00Z')});await page.clock.pauseAt(new Date('2026-01-01T00:00:00.100Z'));await page.goto('/');await expect(page.getByRole('heading',{name:'A coast worth playing.'})).toBeVisible();}
+async function open(page:Page):Promise<void>{await page.clock.install({time:new Date('2026-01-01T00:00:00Z')});await page.clock.pauseAt(new Date('2026-01-01T00:00:30Z'));await page.goto('/');await expect(page.getByRole('heading',{name:'A coast worth playing.'})).toBeVisible();}
 async function practice(page:Page,id:string):Promise<void>{await page.locator(`[data-sport="${id}"]`).click();await page.getByRole('button',{name:/^Start /}).click();await expect(page.locator('#game')).toBeVisible();}
 async function tick(page:Page,ms:number):Promise<void>{await page.clock.runFor(ms);}
 async function tap(page:Page,key:string):Promise<void>{await page.keyboard.down(key);await tick(page,35);await page.keyboard.up(key);await tick(page,35);}
